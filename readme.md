@@ -10,7 +10,7 @@
 
 本工具可以使用三种模式部署：
 
-- Crontab：适用于 Linux 系统、macOS 与 WSL。
+- Crontab：适用于 Linux 系统、macOS 与 WSL（可能可以）。
 - Systemd：适用于 Linux 大部分发行版，项目内未实现相关配置。
 - Service：适用于 Windows 系统，使用 `node-windows` 模块设置相关服务，项目内未实现相关配置。
 
@@ -25,6 +25,13 @@
 - 如果要将IP地址设置为客户端所在的公网 IP 地址, 要确保客户端被当地运营商分配的不是**内网IP**（即使用万网查询 IP 地址时会出现两个IP地址，其中一个是 NAT 的 IP 地址）。如果是内网的 IP 地址, 可以给客服打电话要求更换为公网 IP 地址。
 
 ## 使用方法
+
+注意：项目中的shell脚本文件需要添加执行权限。
+
+```bash
+$ chmod +x install.sh
+$ chmod +x set-crontab.sh
+```
 
 ### （推荐）设置DMZ使最外侧家庭网关能够接通到你的电脑
 
