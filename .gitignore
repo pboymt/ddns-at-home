@@ -92,3 +92,4 @@ lib
 settings.json
 test.js
 package-lock.json
+ddns.sh
