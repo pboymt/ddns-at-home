@@ -1,0 +1,10 @@
+{
+    "$schema": "./settings.schema.json",
+    "apiKey": "<your api key>",
+    "apiSecret": "<your api secret>",
+    "domainName": "<your domain>",
+    "resourceRecord": "<your RR>",
+    "disableIPv6": true,
+    "disableIPv4": false,
+    "TTL": 600
+}

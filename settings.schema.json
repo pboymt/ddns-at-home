@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "required": [
+        "apiKey",
+        "apiSecret",
+        "domainName",
+        "resourceRecord"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "The schema to verify this document against."
+        },
+        "apiKey": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 16,
+            "title": "阿里云API Key"
+        },
+        "apiSecret": {
+            "type": "string",
+            "maxLength": 30,
+            "minLength": 30,
+            "title": "阿里云API Secret"
+        },
+        "domainName": {
+            "type": "string",
+            "pattern": "[a-z0-9]+\\.[a-z0-9]+",
+            "title": "需要设定记录的域名"
+        },
+        "resourceRecord": {
+            "type": "string",
+            "pattern": "(\\*|@|[a-z0-9]+)",
+            "title": "需要设定的解析记录值"
+        },
+        "disableIPv6": {
+            "type": "boolean",
+            "default": true,
+            "title": "忽略IPv6记录的设定"
+        },
+        "disableIPv4": {
+            "type": "boolean",
+            "default": false,
+            "title": "忽略IPv4记录的设定"
+        },
+        "TTL": {
+            "type": "number",
+            "default": 600,
+            "maximum": 86400,
+            "minimum": 60
+        }
+    }
+}

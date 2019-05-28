@@ -1,0 +1,31 @@
+{
+  "name": "ali-ddns",
+  "version": "0.0.1",
+  "description": "ddns in home",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node lib/index.js",
+    "build": "tsc",
+    "crontab": "./set-crontab.sh"
+  },
+  "keywords": [
+    "ddns"
+  ],
+  "author": {
+    "name": "pboymt",
+    "url": "https://github.com/pboymt"
+  },
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pboymt/aliyun-ddns.git"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.7",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.7",
+    "ajv": "^6.10.0"
+  }
+}
