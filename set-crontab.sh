@@ -6,6 +6,6 @@ shpath="$PWD/ddns.sh"
 
 echo cronsh >> shpath
 
-cronjob="*/30 * * * * $shpath"
+cronjob="*/15 * * * * $shpath"
 
 (crontab -u $USER -l; echo "$cronjob" ) | crontab -u $USER -
