@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node lib/index.js",
     "build": "tsc",
-    "onekey": "npm run chmod && ./install.sh",
-    "crontab": "./set-crontab.sh",
+    "onekey": "sh install.sh",
+    "crontab": "sh set-crontab.sh",
     "chmod": "chmod +x install.sh && chmod +x set-crontab.sh"
   },
   "keywords": [

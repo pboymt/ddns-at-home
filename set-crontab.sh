@@ -8,6 +8,6 @@ echo -e $cronsh >> $shpath
 
 chmod +x $shpath
 
-cronjob="*/15 * * * * $shpath"
+cronjob="*/15 * * * * $shpath >> $PWD/ddns.log"
 
 (crontab -u $USER -l; echo "$cronjob" ) | crontab -u $USER -
