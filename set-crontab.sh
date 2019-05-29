@@ -8,6 +8,6 @@ echo -e $cronsh >> $shpath
 
 chmod +x $shpath
 
-cronjob="*/15 * * * * source /etc/profile && sh $shpath >> $PWD/ddns.log"
+cronjob="*/15 * * * * . \$HOME/.profile; sh $shpath >> $PWD/ddns.log"
 
 (crontab -u $USER -l; echo "$cronjob" ) | crontab -u $USER -
