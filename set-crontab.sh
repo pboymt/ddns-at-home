@@ -1,6 +1,6 @@
 #! /bin/bash
 
-cronsh="#! /bin/bash\ncd $PWD\nnode lib/index.js"
+cronsh="#! /bin/bash\nsource /etc/profile\ncd $PWD\nnode lib/index.js"
 
 shpath="$PWD/ddns.sh"
 
