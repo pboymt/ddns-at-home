@@ -3,7 +3,7 @@ import { join } from "path";
 import { DDNSSetting, AliyunResponse } from "./interface";
 import { readFileSync } from "fs";
 import { v } from "./validate";
-import { IP } from "./ip";
+import { IP, simpleIP } from "./ip";
 
 const settingPath = join(__dirname, '../settings.json');
 const setting: DDNSSetting = JSON.parse(readFileSync(settingPath, 'utf-8'));
@@ -229,7 +229,7 @@ async function UpdateDomainRecord(RecordId: string, RR: string, Type: 'A' | 'AAA
 
             try {
 
-                const ip = await IP();
+                const ip = await simpleIP();
 
                 if (RRID.v4.value === ip) {
 
@@ -265,7 +265,7 @@ async function UpdateDomainRecord(RecordId: string, RR: string, Type: 'A' | 'AAA
 
             try {
 
-                const ip = await IP();
+                const ip = await simpleIP();
 
                 console.log(`您的IPv4地址为：${ip}，将添加解析记录`);
 
@@ -306,7 +306,7 @@ async function UpdateDomainRecord(RecordId: string, RR: string, Type: 'A' | 'AAA
 
             try {
 
-                const ip = await IP(true);
+                const ip = await simpleIP(true);
 
                 if (RRID.v6.value === ip) {
 
@@ -342,7 +342,7 @@ async function UpdateDomainRecord(RecordId: string, RR: string, Type: 'A' | 'AAA
 
             try {
 
-                const ip = await IP(true);
+                const ip = await simpleIP(true);
 
                 console.log(`您的IPv6地址为：${ip}，将添加解析记录`);
 
