@@ -90,6 +90,7 @@ typings/
 # User Setting files
 lib
 settings.json
+settings2.json
 test.js
 package-lock.json
 ddns.sh
