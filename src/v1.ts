@@ -2,6 +2,7 @@ import Core from '@alicloud/pop-core';
 import { DDNSSettingV1 } from "./interface";
 import { QueryDomainList, QueryDomainByInstanceId, DescribeDomains, DescribeDomainRecords, AddDomainRecord, UpdateDomainRecord } from "./services/aliyun/response";
 import { IP } from "./services/ip.old";
+import { logger } from './utils/logger';
 
 interface DescribeDomainRecordsRsp {
     v4: false | { rid: string; value: string; }
@@ -65,7 +66,7 @@ export class DDNSV1 {
 
         const result: QueryDomainByInstanceId = await this.DomainClient.request('QueryDomainByInstanceId', params, requestOption);
 
-        console.log(result.DnsList.dns);
+        logger.log(result.DnsList.dns);
 
     }
 
@@ -155,7 +156,7 @@ export class DDNSV1 {
 
         } catch (error) {
 
-            console.log(error);
+            logger.log(error);
 
             return false;
 
@@ -194,7 +195,7 @@ export class DDNSV1 {
 
         } catch (error) {
 
-            console.log(error);
+            logger.log(error);
 
             return false;
 
@@ -208,7 +209,7 @@ export class DDNSV1 {
 
         if (!DomainName) {
 
-            console.log(`域名 '${this.setting.domainName}' 不存在`);
+            logger.log(`域名 '${this.setting.domainName}' 不存在`);
             return;
 
         }
@@ -218,14 +219,14 @@ export class DDNSV1 {
 
         if (this.setting.disableIPv4) {
 
-            console.log('禁用IPv4地址的解析记录，跳过对A记录的设置');
+            logger.log('禁用IPv4地址的解析记录，跳过对A记录的设置');
 
         } else {
 
 
             if (RRID.v4) {
 
-                console.log(`解析 '${this.setting.resourceRecord}' A记录存在，将进行IPv4变化检测，酌情修改A记录`);
+                logger.log(`解析 '${this.setting.resourceRecord}' A记录存在，将进行IPv4变化检测，酌情修改A记录`);
 
                 try {
 
@@ -235,21 +236,21 @@ export class DDNSV1 {
 
                     if (RRID.v4.value === ip) {
 
-                        console.log(`您的IPv4地址为：${ip}，没有发生变化，不需要修改解析记录`);
+                        logger.log(`您的IPv4地址为：${ip}，没有发生变化，不需要修改解析记录`);
 
                     } else {
 
-                        console.log(`您的IPv4地址为：${ip}，发生了变化，准备修改解析记录`);
+                        logger.log(`您的IPv4地址为：${ip}，发生了变化，准备修改解析记录`);
 
                         const result = await this.UpdateDomainRecord(RRID.v4.rid, this.setting.resourceRecord, 'A', ip, this.setting.TTL);
 
                         if (result) {
 
-                            console.log('解析记录修改成功');
+                            logger.log('解析记录修改成功');
 
                         } else {
 
-                            console.log('解析记录修改失败');
+                            logger.log('解析记录修改失败');
 
                         }
 
@@ -257,13 +258,13 @@ export class DDNSV1 {
 
                 } catch (error) {
 
-                    console.log('您的设备没有公网IPv4地址，取消修改解析记录');
+                    logger.log('您的设备没有公网IPv4地址，取消修改解析记录');
 
                 }
 
             } else {
 
-                console.log(`解析 '${this.setting.resourceRecord}' A记录不存在，将进行IPv4地址嗅探，并添加A记录`);
+                logger.log(`解析 '${this.setting.resourceRecord}' A记录不存在，将进行IPv4地址嗅探，并添加A记录`);
 
                 try {
 
@@ -271,25 +272,25 @@ export class DDNSV1 {
 
                     if (!ip) throw '';
 
-                    console.log(`您的IPv4地址为：${ip}，将添加解析记录`);
+                    logger.log(`您的IPv4地址为：${ip}，将添加解析记录`);
 
                     const result = await this.AddDomainRecord(this.setting.domainName, this.setting.resourceRecord, 'A', ip, this.setting.TTL);
 
                     if (result) {
 
-                        console.log('解析记录修改成功');
+                        logger.log('解析记录修改成功');
 
                     } else {
 
-                        console.log('解析记录修改失败');
+                        logger.log('解析记录修改失败');
 
                     }
 
                 } catch (error) {
 
-                    console.log(error);
+                    logger.log(error);
 
-                    console.log('您的设备没有公网IPv4地址，取消添加解析记录');
+                    logger.log('您的设备没有公网IPv4地址，取消添加解析记录');
 
                 }
 
@@ -299,14 +300,14 @@ export class DDNSV1 {
 
         if (this.setting.disableIPv6) {
 
-            console.log('禁用IPv6地址的解析记录，跳过对AAAA记录的设置');
+            logger.log('禁用IPv6地址的解析记录，跳过对AAAA记录的设置');
 
         } else {
 
 
             if (RRID.v6) {
 
-                console.log(`解析 '${this.setting.resourceRecord}' AAAA记录存在，将进行IPv6变化检测，酌情修改AAAA记录`);
+                logger.log(`解析 '${this.setting.resourceRecord}' AAAA记录存在，将进行IPv6变化检测，酌情修改AAAA记录`);
 
                 try {
 
@@ -316,21 +317,21 @@ export class DDNSV1 {
 
                     if (RRID.v6.value === ip) {
 
-                        console.log(`您的IPv6地址为：${ip}，没有发生变化，不需要修改解析记录`);
+                        logger.log(`您的IPv6地址为：${ip}，没有发生变化，不需要修改解析记录`);
 
                     } else {
 
-                        console.log(`您的IPv6地址为：${ip}，发生了变化，准备修改解析记录`);
+                        logger.log(`您的IPv6地址为：${ip}，发生了变化，准备修改解析记录`);
 
                         const result = await this.UpdateDomainRecord(RRID.v6.rid, this.setting.resourceRecord, 'AAAA', ip, this.setting.TTL);
 
                         if (result) {
 
-                            console.log('解析记录修改成功');
+                            logger.log('解析记录修改成功');
 
                         } else {
 
-                            console.log('解析记录修改失败');
+                            logger.log('解析记录修改失败');
 
                         }
 
@@ -338,13 +339,13 @@ export class DDNSV1 {
 
                 } catch (error) {
 
-                    console.log('您的设备没有公网IPv6地址，取消修改解析记录');
+                    logger.log('您的设备没有公网IPv6地址，取消修改解析记录');
 
                 }
 
             } else {
 
-                console.log(`解析 '${this.setting.resourceRecord}' AAAA记录不存在，将进行IPv6地址嗅探，并添加AAAA记录`);
+                logger.log(`解析 '${this.setting.resourceRecord}' AAAA记录不存在，将进行IPv6地址嗅探，并添加AAAA记录`);
 
                 try {
 
@@ -352,23 +353,23 @@ export class DDNSV1 {
 
                     if (!ip) throw '';
 
-                    console.log(`您的IPv6地址为：${ip}，将添加解析记录`);
+                    logger.log(`您的IPv6地址为：${ip}，将添加解析记录`);
 
                     const result = await this.AddDomainRecord(this.setting.domainName, this.setting.resourceRecord, 'AAAA', ip, this.setting.TTL);
 
                     if (result) {
 
-                        console.log('解析记录修改成功');
+                        logger.log('解析记录修改成功');
 
                     } else {
 
-                        console.log('解析记录修改失败');
+                        logger.log('解析记录修改失败');
 
                     }
 
                 } catch (error) {
 
-                    console.log('您的设备没有公网IPv6地址，取消添加解析记录');
+                    logger.log('您的设备没有公网IPv6地址，取消添加解析记录');
 
                 }
 

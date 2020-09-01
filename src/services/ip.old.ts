@@ -1,5 +1,6 @@
 import { get } from "http";
 import Axios from 'axios';
+import { logger } from "../utils/logger";
 
 interface TestIPv6Response {
     ip: string
@@ -20,7 +21,7 @@ export function simpleIP(v6 = false): Promise<string> {
             headers: headers
         }, (res) => {
 
-            console.log(res.statusCode);
+            logger.log(res.statusCode);
 
             if (res.statusCode === 200) {
 
