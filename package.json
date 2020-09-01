@@ -4,11 +4,14 @@
   "description": "ddns in home",
   "main": "lib/index.js",
   "scripts": {
-    "start": "node lib/index.js",
+    "start": "cross-env NODE_ENV=development node lib/index.js",
+    "start:log": "cross-env NODE_ENV=development node lib/index.js > test.log",
     "build": "tsc",
     "onekey": "sh install.sh",
     "crontab": "sh set-crontab.sh",
-    "chmod": "chmod +x install.sh && chmod +x set-crontab.sh"
+    "chmod": "chmod +x install.sh && chmod +x set-crontab.sh",
+    "lint": "eslint .",
+    "fix": "tslint --project . --fix"
   },
   "keywords": [
     "ddns"
@@ -23,11 +26,18 @@
     "url": "https://github.com/pboymt/aliyun-ddns.git"
   },
   "devDependencies": {
-    "@types/node": "^11.13.7",
-    "typescript": "^3.4.5"
+    "@types/node": "^14.6.0",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.7.0",
+    "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@alicloud/pop-core": "^1.7.7",
-    "ajv": "^6.10.0"
+    "@alicloud/pop-core": "^1.7.9",
+    "@kocal/logger": "^2.0.11",
+    "ajv": "^6.12.4",
+    "axios": "^0.20.0",
+    "date-fns": "^2.15.0"
   }
 }
