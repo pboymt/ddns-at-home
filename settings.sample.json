@@ -1,10 +1,29 @@
 {
-    "$schema": "./settings.schema.json",
-    "apiKey": "<your api key>",
-    "apiSecret": "<your api secret>",
-    "domainName": "<your domain>",
-    "resourceRecord": "<your RR>",
-    "disableIPv6": true,
-    "disableIPv4": false,
-    "TTL": 600
+    "$schema": "./settings.v2.schema.json",
+    "version": 2,
+    "global": {
+        "disableIPv4": false,
+        "disableIPv6": false,
+        "TTL": 600
+    },
+    "services": [
+        {
+            "name": "aliyun",
+            "apiKey": "<aliyun api key>",
+            "apiSecret": "<aliyun api secret>",
+            "domains": [
+                {
+                    "domainName": "example.com",
+                    "resourceRecords": [
+                        {
+                            "resourceRecord": "home",
+                            "disableIPv4": false,
+                            "disableIPv6": true,
+                            "TTL": 600
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
