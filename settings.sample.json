@@ -25,5 +25,8 @@
                 }
             ]
         }
-    ]
+    ],
+    "schedule": {
+        "immediate": false
+    }
 }

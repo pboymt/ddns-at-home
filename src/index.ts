@@ -1,92 +1,68 @@
-import { readFileSync } from "fs";
-import { join } from "path";
-import { validateV1, validateV2 } from "./services/settings-validate";
+import { setting as s } from "./setting";
 import { help } from "./utils/help";
-import { logger } from "./utils/logger";
 import { DDNSV1 } from "./v1";
 import { DDNSV2 } from "./v2";
-import { DDNSSettingV2, DDNSSettingV1 } from "./interface";
+import timexe from 'timexe';
+import { logger } from "./utils/logger";
 
 help();
 
-const settingPath = join(__dirname, '../settings.json');
-logger.debug(`配置文件路径：${settingPath}`);
+const setting = s();
 
-let settingObj: unknown;
+if (setting.version === 1) {
 
-try {
-
-    settingObj = JSON.parse(readFileSync(settingPath, 'utf-8'));
-
-} catch (error) {
-
-    logger.error(`配置文件解析错误`);
-    process.exit(1);
-
-}
-
-if (typeof settingObj !== 'object') {
-
-    logger.error(`配置文件不合规范`);
-    process.exit(1);
-
-}
-
-if (settingObj && (settingObj as DDNSSettingV2).version && (settingObj as DDNSSettingV2).version === 2) {
-
-    logger.info('使用V2版本配置');
-    logger.debug(settingObj);
-
-    const v = validateV2();
-
-    const valid = v(settingObj);
-
-    if (!valid) {
-
-        if (v.errors) {
-
-            logger.error(`配置文件有${v.errors.length}个错误`);
-
-            v.errors.forEach(v => logger.error(v));
-
-        } else {
-
-            logger.error('未知错误');
-
-        }
-
-        process.exit(1);
-
-    }
-
-    void DDNSV2.run(settingObj as DDNSSettingV2);
+    void new DDNSV1(setting.setting).run();
 
 } else {
 
-    logger.info('使用v1版本配置');
-    logger.log(settingObj);
+    void (async () => {
 
-    const v = validateV1();
+        if (setting.setting.schedule) {
 
-    const valid = v(settingObj);
+            logger.info('使用计划任务功能');
 
-    if (!valid) {
+            if (setting.setting.schedule.immediate) {
 
-        if (v.errors) {
+                logger.info('立即执行一次');
 
-            logger.error(`配置文件有${v.errors.length}个错误`);
+                await DDNSV2.run(setting.setting);
 
-            v.errors.forEach(v => logger.error(v));
+            }
+
+            const result = timexe(
+                `* * * ${setting.setting.schedule.hour ?? '*'} ${setting.setting.schedule.minute ?? '/5'}`,
+                async () => {
+
+                    logger.info('执行计划任务');
+
+                    await DDNSV2.run(setting.setting);
+
+                    logger.info('计划任务执行完毕');
+
+                }
+            );
+
+            if (result.result === 'ok') {
+
+                logger.info('计划任务配置成功');
+
+            } else {
+
+                logger.error('计划任务配置失败');
+                logger.error(result.error);
+
+                timexe.remove(result.id);
+
+                process.exit();
+
+            }
 
         } else {
 
-            logger.error('未知错误');
+            await DDNSV2.run(setting.setting);
 
         }
 
-        process.exit(1);
+    })();
 
-    }
-
-    void new DDNSV1(settingObj as DDNSSettingV1).run();
 }

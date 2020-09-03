@@ -819,6 +819,11 @@ text-table@^0.2.0:
   resolved "https://registry.npm.taobao.org/text-table/download/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+timexe@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/timexe/download/timexe-1.0.0.tgz#aeebcdb7403494fa7430e3d7d866529597dd6e18"
+  integrity sha1-ruvNt0A0lPp0MOPX2GZSlZfdbhg=
+
 tslib@^1.8.1:
   version "1.13.0"
   resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.13.0.tgz?cache=0&sync_timestamp=1596751904317&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"

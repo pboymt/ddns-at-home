@@ -15,12 +15,19 @@ export interface DDNSSettingV2 {
     version: 2
     services: DDNSSettingV2Service[]
     global: DDNSSettingV2Global
+    schedule?: DDNSSettingV2Schedule
 }
 
 export interface DDNSSettingV2Global {
     disableIPv6: boolean
     disableIPv4: boolean
     TTL: number
+}
+
+export interface DDNSSettingV2Schedule {
+    immediate: boolean
+    hour: string
+    minute: string
 }
 
 export interface DDNSSettingV2Service {

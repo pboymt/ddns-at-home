@@ -109,19 +109,24 @@
                                             "properties": {
                                                 "resourceRecord": {
                                                     "type": "string",
-                                                    "title": ""
+                                                    "title": "域名记录"
                                                 },
                                                 "disableIPv6": {
                                                     "type": "boolean",
+                                                    "title": "禁用IPv6设置（不设置AAAA记录）",
                                                     "default": false
                                                 },
                                                 "disableIPv4": {
                                                     "type": "boolean",
+                                                    "title": "禁用IPv4设置（不设置A记录）",
                                                     "default": false
                                                 },
                                                 "TTL": {
                                                     "type": "number",
-                                                    "default": 600
+                                                    "title": "域名记录TTL值",
+                                                    "description": "请谨慎使用小于600的值",
+                                                    "default": 600,
+                                                    "minimum": 1
                                                 }
                                             }
                                         }
@@ -132,6 +137,29 @@
                     }
                 }
             ]
+        },
+        "schedule": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "immediate"
+            ],
+            "properties": {
+                "immediate": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "hour": {
+                    "type": "string",
+                    "default": "*",
+                    "pattern": "^(\\*|2[0-3]|1[0-9]|[0-9]|\/[2-9]|\/1[0-2])$"
+                },
+                "minute": {
+                    "type": "string",
+                    "default": "/5",
+                    "pattern": "^(\\*|[0-9]|[1-5][0-9]|\/[2-9]|\/[1-5][0-9])$"
+                }
+            }
         }
     }
 }
