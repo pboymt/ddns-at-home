@@ -111,7 +111,7 @@ export class AliyunService {
                             logger.info(`A记录[${record_setting.resourceRecord}]已存在，更新解析记录`);
 
                             await this.updateDomainRecord(
-                                domain.domainName,
+                                existed_record.RecordId,
                                 record_setting.resourceRecord,
                                 'A',
                                 this.ip.v4,
@@ -167,7 +167,7 @@ export class AliyunService {
                             logger.info(`AAAA记录[${record_setting.resourceRecord}]已存在，更新解析记录`);
 
                             await this.updateDomainRecord(
-                                domain.domainName,
+                                existed_record.RecordId,
                                 record_setting.resourceRecord,
                                 'AAAA',
                                 this.ip.v6,
