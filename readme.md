@@ -86,15 +86,15 @@ $ npm install -g typescript
 将项目 `git clone` 到目录：
 
 ```bash
-$ git clone https://github.com/pboymt/aliyun-ddns.git
+$ git clone https://github.com/pboymt/ddns-at-home.git
 # 国内用户请配置好代理/Hosts/可靠性高的DNS服务，或者直接使用码云Gitee的镜像
-$ git clone https://gitee.com/pboymt/aliyun-ddns.git
+$ git clone https://gitee.com/pboymt/ddns-at-home.git
 ```
 
 切换到目录：
 
 ```bash
-$ cd aliyun-ddns
+$ cd ddns-at-home
 ```
 
 安装依赖：

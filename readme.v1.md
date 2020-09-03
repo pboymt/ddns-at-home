@@ -61,8 +61,8 @@ $ npm i -g typescript
 先将项目 `git clone` 到目录。
 
 ```bash
-$ git clone https://github.com/pboymt/aliyun-ddns.git
-$ cd aliyun-ddns
+$ git clone https://github.com/pboymt/ddns-at-home.git
+$ cd ddns-at-home
 ```
 
 （可选）一键安装，此脚本文件会一键安装依赖、编译、设置crontab（这种方法必须全局安装了typescript才能使用）：
