@@ -37,7 +37,7 @@
     "@alicloud/pop-core": "^1.7.9",
     "@kocal/logger": "^2.0.11",
     "ajv": "^6.12.4",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "date-fns": "^2.15.0",
     "timexe": "^1.0.0"
   }
