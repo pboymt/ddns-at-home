@@ -1,5 +1,5 @@
 import { logger } from "../../utils/logger";
-import { DDNSSettingV2Service, DDNSSettingV2Global, DDNSSettingV2Domain } from "../../interface";
+import { DDNSSettingService, DDNSSettingGlobal, DDNSSettingDomain } from "../../interface";
 import { DNSClient, DomainClient } from "./clients";
 import Core from '@alicloud/pop-core';
 import { DescribeDomains, DomainType, DescribeDomainRecords, RecordType, AddDomainRecord, UpdateDomainRecord } from "./response";
@@ -22,16 +22,16 @@ export class AliyunService {
     );
 
     constructor(
-        private serviceSetting: DDNSSettingV2Service,
-        private globalSetting: DDNSSettingV2Global,
+        private serviceSetting: DDNSSettingService,
+        private globalSetting: DDNSSettingGlobal,
         private ip: IPAddress
     ) {
         logger.debug('Build AliyunService');
     }
 
     static async run(
-        serviceSetting: DDNSSettingV2Service,
-        globalSetting: DDNSSettingV2Global,
+        serviceSetting: DDNSSettingService,
+        globalSetting: DDNSSettingGlobal,
         ip: IPAddress
     ): Promise<void> {
         const service = new AliyunService(serviceSetting, globalSetting, ip);
@@ -84,7 +84,7 @@ export class AliyunService {
 
     }
 
-    async iterateRecords(domain: DDNSSettingV2Domain): Promise<void> {
+    async iterateRecords(domain: DDNSSettingDomain): Promise<void> {
 
         const record_list = await this.describeDomainRecords(domain.domainName);
 
