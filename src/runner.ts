@@ -8,7 +8,7 @@ interface IPAddress {
     v6: string | null
 }
 
-export class DDNSV2 {
+export class DDNSRunner {
 
     readonly globalRRSetting: DDNSSettingGlobal;
     readonly services: DDNSSettingService[] = [];
@@ -21,7 +21,7 @@ export class DDNSV2 {
     constructor(
         private settings: DDNSSetting
     ) {
-        logger.debug('生成DDNSV2对象');
+        logger.debug('生成DDNSRunner对象');
         this.globalRRSetting = settings.global;
         logger.debug('识别到全局设置为：');
         logger.debug(this.globalRRSetting);
@@ -30,7 +30,7 @@ export class DDNSV2 {
     }
 
     static async run(settings: DDNSSetting): Promise<void> {
-        const ddns = new DDNSV2(settings);
+        const ddns = new DDNSRunner(settings);
         await ddns.getIP();
         await ddns.registerServices();
     }

@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 import { DDNSSetting } from "./interface";
-import { validateV1, validateV2 } from "./services/settings-validate";
+import { validateSetting } from "./services/settings-validate";
 import { logger } from "./utils/logger";
 
 
@@ -23,24 +23,21 @@ export function setting(): Setting {
 
     } catch (error) {
 
-        logger.error(`配置文件解析错误`);
-        process.exit(1);
+        throw Error(`配置文件解析错误`);
 
     }
 
     if (typeof settingObj !== 'object') {
 
-        logger.error(`配置文件不合规范`);
-        process.exit(1);
+        throw Error(`配置文件不合规范`);
 
     }
 
     if (settingObj && settingObj.version && settingObj.version === 2) {
 
-        logger.info('使用V2版本配置');
         logger.debug(settingObj);
 
-        const v = validateV2();
+        const v = validateSetting();
 
         const valid = v(settingObj);
 

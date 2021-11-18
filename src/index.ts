@@ -1,7 +1,7 @@
 import { setting as s } from "./setting";
 import { help } from "./utils/help";
 // import { DDNSV1 } from "./v1";
-import { DDNSV2 } from "./v2";
+import { DDNSRunner } from "./runner";
 import timexe from 'timexe';
 import { logger } from "./utils/logger";
 
@@ -25,7 +25,7 @@ void (async () => {
 
             logger.info('立即执行一次');
 
-            await DDNSV2.run(setting.setting);
+            await DDNSRunner.run(setting.setting);
 
         }
 
@@ -35,7 +35,7 @@ void (async () => {
 
                 logger.info('执行计划任务');
 
-                await DDNSV2.run(setting.setting);
+                await DDNSRunner.run(setting.setting);
 
                 logger.info('计划任务执行完毕');
 
@@ -59,7 +59,7 @@ void (async () => {
 
     } else {
 
-        await DDNSV2.run(setting.setting);
+        await DDNSRunner.run(setting.setting);
 
     }
 
