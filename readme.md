@@ -1,7 +1,7 @@
 # ddns-at-home 动态更改DNS解析记录（原aliyun-ddns）
 
 ![GitHub](https://img.shields.io/github/license/pboymt/aliyun-ddns.svg?style=flat-square)
-![](https://img.shields.io/badge/Language-TypeScript-blue)
+![](https://img.shields.io/badge/Language-TypeScript-blue?style=flat-square)
 
 ## 新版本亮点
 
@@ -30,25 +30,25 @@
 ### 依赖
 
 | 包名 | 用途 | 使用版本 |
-| :- | :- | :-: |
-| @alicloud/pop-core | 用于请求阿里云OpenAPI | ![@alicloud/pop-core](https://img.shields.io/static/v1?label=@alicloud/pop-core&message=^1.7.10&color=important) |
-| @kocal/logger | 格式化日志输出 | ![@kocal/logger](https://img.shields.io/static/v1?label=@kocal/logger&message=^2.0.11&color=important) |
-| ajv | 用于验证JSON Schema | ![ajv](https://img.shields.io/static/v1?label=ajv&message=^6.12.4&color=important) |
-| axios | 探测IP地址 | ![axios](https://img.shields.io/static/v1?label=axios&message=^0.24.0&color=important) |
-| date-fns | 格式化日志时间 | ![date-fns](https://img.shields.io/static/v1?label=date-fns&message=^2.15.0&color=important) |
-| timexe | 执行定时任务 | ![timexe](https://img.shields.io/static/v1?label=timexe&message=^1.0.5&color=important) |
+| :- | :- | :- |
+| @alicloud/pop-core | 用于请求阿里云OpenAPI | ![@alicloud/pop-core](https://img.shields.io/static/v1?label=@alicloud/pop-core&message=^1.7.10&color=important&style=flat-square) |
+| @kocal/logger | 格式化日志输出 | ![@kocal/logger](https://img.shields.io/static/v1?label=@kocal/logger&message=^2.0.11&color=important&style=flat-square) |
+| ajv | 用于验证JSON Schema | ![ajv](https://img.shields.io/static/v1?label=ajv&message=^6.12.4&color=important&style=flat-square) |
+| axios | 探测IP地址 | ![axios](https://img.shields.io/static/v1?label=axios&message=^0.24.0&color=important&style=flat-square) |
+| date-fns | 格式化日志时间 | ![date-fns](https://img.shields.io/static/v1?label=date-fns&message=^2.15.0&color=important&style=flat-square) |
+| timexe | 执行定时任务 | ![timexe](https://img.shields.io/static/v1?label=timexe&message=^1.0.5&color=important&style=flat-square) |
 
 ### 开发依赖
 
 | 包名 | 使用版本 |
-| :- | :-: |
-| @types/node | ![@types/node](https://img.shields.io/static/v1?label=@types/node&message=^16.11.7&color=important) |
-| @typescript-eslint/eslint-plugin | ![@typescript-eslint/eslint-plugin](https://img.shields.io/static/v1?label=@typescript-eslint/eslint-plugin&message=^5.4.0&color=important) |
-| @typescript-eslint/parser | ![@typescript-eslint/parser](https://img.shields.io/static/v1?label=@typescript-eslint/parser&message=^5.4.0&color=important) |
-| cross-env | ![cross-env](https://img.shields.io/static/v1?label=cross-env&message=^7.0.2&color=important) |
-| eslint | ![eslint](https://img.shields.io/static/v1?label=eslint&message=^8.2.0&color=important) |
-| markdown-table | ![markdown-table](https://img.shields.io/static/v1?label=markdown-table&message=^3.0.1&color=important) |
-| typescript | ![typescript](https://img.shields.io/static/v1?label=typescript&message=^4.5.2&color=important) |
+| :- | :- |
+| @types/node | ![@types/node](https://img.shields.io/static/v1?label=@types/node&message=^16.11.7&color=important&style=flat-square) |
+| @typescript-eslint/eslint-plugin | ![@typescript-eslint/eslint-plugin](https://img.shields.io/static/v1?label=@typescript-eslint/eslint-plugin&message=^5.4.0&color=important&style=flat-square) |
+| @typescript-eslint/parser | ![@typescript-eslint/parser](https://img.shields.io/static/v1?label=@typescript-eslint/parser&message=^5.4.0&color=important&style=flat-square) |
+| cross-env | ![cross-env](https://img.shields.io/static/v1?label=cross-env&message=^7.0.2&color=important&style=flat-square) |
+| eslint | ![eslint](https://img.shields.io/static/v1?label=eslint&message=^8.2.0&color=important&style=flat-square) |
+| markdown-table | ![markdown-table](https://img.shields.io/static/v1?label=markdown-table&message=^3.0.1&color=important&style=flat-square) |
+| typescript | ![typescript](https://img.shields.io/static/v1?label=typescript&message=^4.5.2&color=important&style=flat-square) |
 
 
 本项目使用TypeScript编写，确保稳定运行。
