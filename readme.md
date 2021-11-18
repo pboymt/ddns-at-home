@@ -42,13 +42,13 @@
 
 | 包名 | 使用版本 |
 | :- | :- |
-| @types/node | ![@types/node](https://img.shields.io/static/v1?label=@types/node&message=^16.11.7&color=important&style=flat-square) |
-| @typescript-eslint/eslint-plugin | ![@typescript-eslint/eslint-plugin](https://img.shields.io/static/v1?label=@typescript-eslint/eslint-plugin&message=^5.4.0&color=important&style=flat-square) |
-| @typescript-eslint/parser | ![@typescript-eslint/parser](https://img.shields.io/static/v1?label=@typescript-eslint/parser&message=^5.4.0&color=important&style=flat-square) |
-| cross-env | ![cross-env](https://img.shields.io/static/v1?label=cross-env&message=^7.0.2&color=important&style=flat-square) |
-| eslint | ![eslint](https://img.shields.io/static/v1?label=eslint&message=^8.2.0&color=important&style=flat-square) |
-| markdown-table | ![markdown-table](https://img.shields.io/static/v1?label=markdown-table&message=^3.0.1&color=important&style=flat-square) |
-| typescript | ![typescript](https://img.shields.io/static/v1?label=typescript&message=^4.5.2&color=important&style=flat-square) |
+| @types/node | ![@types/node](https://img.shields.io/static/v1?label=@types/node&message=16.11.7&color=important&style=flat-square) |
+| @typescript-eslint/eslint-plugin | ![@typescript-eslint/eslint-plugin](https://img.shields.io/static/v1?label=@typescript-eslint/eslint-plugin&message=5.4.0&color=important&style=flat-square) |
+| @typescript-eslint/parser | ![@typescript-eslint/parser](https://img.shields.io/static/v1?label=@typescript-eslint/parser&message=5.4.0&color=important&style=flat-square) |
+| cross-env | ![cross-env](https://img.shields.io/static/v1?label=cross-env&message=7.0.2&color=important&style=flat-square) |
+| eslint | ![eslint](https://img.shields.io/static/v1?label=eslint&message=8.2.0&color=important&style=flat-square) |
+| markdown-table | ![markdown-table](https://img.shields.io/static/v1?label=markdown-table&message=3.0.1&color=important&style=flat-square) |
+| typescript | ![typescript](https://img.shields.io/static/v1?label=typescript&message=4.5.2&color=important&style=flat-square) |
 
 
 本项目使用TypeScript编写，确保稳定运行。
