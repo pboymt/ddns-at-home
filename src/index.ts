@@ -48,12 +48,11 @@ void (async () => {
 
         } else {
 
-            logger.error('计划任务配置失败');
             logger.error(result.error);
 
             timexe.remove(result.id);
 
-            process.exit();
+            throw Error('计划任务配置失败');
 
         }
 

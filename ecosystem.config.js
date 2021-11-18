@@ -2,8 +2,8 @@ module.exports = {
   apps: [
     {
       name: 'ddns-at-home',
-      script: './lib/index.js',
-      watch: './lib',
+      script: './app/index.js',
+      watch: './app',
       env: {
         NODE_ENV: 'development',
         DAEMON: 'pm2'
