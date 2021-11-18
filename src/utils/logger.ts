@@ -19,7 +19,7 @@ export class Logger {
                 const fin_str = pre_str + obj_strs.join(pre_space);
                 return ctx.levelColor(fin_str);
             } else {
-                return ctx.levelColor(`[${ctx.level.padEnd(5, ' ')}][${date_str}][${ctx.name}]·${ctx.message}`);
+                return ctx.levelColor(`[${ctx.level.charAt(0).toUpperCase()}][${date_str}][${ctx.name}]·${ctx.message}`);
             }
         };
 

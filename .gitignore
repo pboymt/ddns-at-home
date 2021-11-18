@@ -88,9 +88,8 @@ typings/
 .dynamodb/
 
 # User Setting files
-lib
-settings.json
-settings2.json
-test.js
-package-lock.json
-ddns.sh
+.vscode/
+readme.md.tpl
+app/
+/settings.json
+build-readme.js

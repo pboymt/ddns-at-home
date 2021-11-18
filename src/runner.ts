@@ -1,4 +1,4 @@
-import { DDNSSettingV2, DDNSSettingV2Global, DDNSSettingV2Service } from "./interface";
+import { DDNSSetting, DDNSSettingGlobal, DDNSSettingService } from "./interface";
 import { logger } from "./utils/logger";
 import { ip } from "./services/ip";
 import { AliyunService } from "./services/aliyun/service";
@@ -8,10 +8,10 @@ interface IPAddress {
     v6: string | null
 }
 
-export class DDNSV2 {
+export class DDNSRunner {
 
-    readonly globalRRSetting: DDNSSettingV2Global;
-    readonly services: DDNSSettingV2Service[] = [];
+    readonly globalRRSetting: DDNSSettingGlobal;
+    readonly services: DDNSSettingService[] = [];
 
     private ip: IPAddress = {
         v4: null,
@@ -19,9 +19,9 @@ export class DDNSV2 {
     };
 
     constructor(
-        private settings: DDNSSettingV2
+        private settings: DDNSSetting
     ) {
-        logger.debug('生成DDNSV2对象');
+        logger.debug('生成DDNSRunner对象');
         this.globalRRSetting = settings.global;
         logger.debug('识别到全局设置为：');
         logger.debug(this.globalRRSetting);
@@ -29,8 +29,8 @@ export class DDNSV2 {
         this.iterateSettings();
     }
 
-    static async run(settings: DDNSSettingV2): Promise<void> {
-        const ddns = new DDNSV2(settings);
+    static async run(settings: DDNSSetting): Promise<void> {
+        const ddns = new DDNSRunner(settings);
         await ddns.getIP();
         await ddns.registerServices();
     }

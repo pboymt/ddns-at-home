@@ -1,48 +1,35 @@
-export type DDNSSetting = DDNSSettingV1 | DDNSSettingV2;
-
-export interface DDNSSettingV1 {
-    serviceName: 'aliyun'
-    apiKey: string
-    apiSecret: string
-    domainName: string
-    resourceRecord: string
-    disableIPv6: boolean
-    disableIPv4: boolean
-    TTL: number
-}
-
-export interface DDNSSettingV2 {
+export interface DDNSSetting {
     version: 2
-    services: DDNSSettingV2Service[]
-    global: DDNSSettingV2Global
-    schedule?: DDNSSettingV2Schedule
+    services: DDNSSettingService[]
+    global: DDNSSettingGlobal
+    schedule?: DDNSSettingSchedule
 }
 
-export interface DDNSSettingV2Global {
+export interface DDNSSettingGlobal {
     disableIPv6: boolean
     disableIPv4: boolean
     TTL: number
 }
 
-export interface DDNSSettingV2Schedule {
+export interface DDNSSettingSchedule {
     immediate: boolean
     hour: string
     minute: string
 }
 
-export interface DDNSSettingV2Service {
+export interface DDNSSettingService {
     name: string
     apiKey: string
     apiSecret: string
-    domains: DDNSSettingV2Domain[]
+    domains: DDNSSettingDomain[]
 }
 
-export interface DDNSSettingV2Domain {
+export interface DDNSSettingDomain {
     domainName: string
-    resourceRecords: DDNSSettingV2RR[]
+    resourceRecords: DDNSSettingRR[]
 }
 
-export interface DDNSSettingV2RR {
+export interface DDNSSettingRR {
     resourceRecord: string
     disableIPv6?: boolean
     disableIPv4?: boolean

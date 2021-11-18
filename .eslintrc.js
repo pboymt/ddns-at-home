@@ -21,7 +21,7 @@ module.exports = {
         // "es6": true,
         "node": true
     },
-    "ignorePatterns": [".eslintrc.js", "lib/**"],
+    "ignorePatterns": [".eslintrc.js", "app/**", 'build-readme.js'],
     // "extends": [
     //     "prettier",
     //     "prettier/@typescript-eslint"

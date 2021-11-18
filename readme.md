@@ -1,18 +1,16 @@
 # ddns-at-home 动态更改DNS解析记录（原aliyun-ddns）
 
 ![GitHub](https://img.shields.io/github/license/pboymt/aliyun-ddns.svg?style=flat-square)
+![](https://img.shields.io/badge/Language-TypeScript-blue)
 
 ## 新版本亮点
 
 - 代码重构，更易阅读
 - 将阿里云服务从单页代码中独立，方便 **接入其他服务**
-- 配置文件规则优化（版本为2，简称V2），可以配置 **多服务、多域名、多记录**
-- 可以脱离Crontab进行定时任务支持
-- 添加 PM2 守护进程配置
+- 配置文件规则优化（版本为2），可以配置 **多服务、多域名、多记录**
+- 不再提供crontab配置，请使用 PM2 守护进程配置或自行配置 systemd 等系统工具。
 
-> V1与V2的表示方法仅为配置文件版本的区别，V1配置仍保留兼容，本工具会自动识别版本，下文V2均代表配置版本。
-
-**[V1版本设置文档](./readme.v1.md)**
+> **已移除V1版本支持**
 
 本项目利用各大DNS服务提供商（例如：阿里云云解析DNS）的 API，在具有公网 IP 的前提下，实现动态修改域名解析的功能，脱离花生壳的昂贵服务，将自己的域名解析为自家的IP地址。
 
@@ -27,23 +25,38 @@
 > 由于test-ipv6.com等服务的IP探测服务存在一定的不稳定性，欢迎大家提供同时包含IPv4和IPv6的免费探测服务。
 
 
-## 本项目使用使用的模块
+## 本项目使用的模块
 
-| 项目                 | 用途                  |
-| -------------------- | --------------------- |
-| `@alicloud/pop-core` | 用于请求阿里云OpenAPI |
-| `ajv`                | 用于验证              |
-| `axios`              | 请求IP探测            |
-| `timexe`             | 执行定时任务          |
-| `@kocal/logger`      | 日志格式化输出        |
-| `date-fns`           | 日志日期格式化        |
+### 依赖
+
+| 包名 | 用途 | 使用版本 |
+| :- | :- | :-: |
+| @alicloud/pop-core | 用于请求阿里云OpenAPI | ![@alicloud/pop-core](https://img.shields.io/static/v1?label=@alicloud/pop-core&message=^1.7.10&color=important) |
+| @kocal/logger | 格式化日志输出 | ![@kocal/logger](https://img.shields.io/static/v1?label=@kocal/logger&message=^2.0.11&color=important) |
+| ajv | 用于验证JSON Schema | ![ajv](https://img.shields.io/static/v1?label=ajv&message=^6.12.4&color=important) |
+| axios | 探测IP地址 | ![axios](https://img.shields.io/static/v1?label=axios&message=^0.24.0&color=important) |
+| date-fns | 格式化日志时间 | ![date-fns](https://img.shields.io/static/v1?label=date-fns&message=^2.15.0&color=important) |
+| timexe | 执行定时任务 | ![timexe](https://img.shields.io/static/v1?label=timexe&message=^1.0.5&color=important) |
+
+### 开发依赖
+
+| 包名 | 使用版本 |
+| :- | :-: |
+| @types/node | ![@types/node](https://img.shields.io/static/v1?label=@types/node&message=^16.11.7&color=important) |
+| @typescript-eslint/eslint-plugin | ![@typescript-eslint/eslint-plugin](https://img.shields.io/static/v1?label=@typescript-eslint/eslint-plugin&message=^5.4.0&color=important) |
+| @typescript-eslint/parser | ![@typescript-eslint/parser](https://img.shields.io/static/v1?label=@typescript-eslint/parser&message=^5.4.0&color=important) |
+| cross-env | ![cross-env](https://img.shields.io/static/v1?label=cross-env&message=^7.0.2&color=important) |
+| eslint | ![eslint](https://img.shields.io/static/v1?label=eslint&message=^8.2.0&color=important) |
+| markdown-table | ![markdown-table](https://img.shields.io/static/v1?label=markdown-table&message=^3.0.1&color=important) |
+| typescript | ![typescript](https://img.shields.io/static/v1?label=typescript&message=^4.5.2&color=important) |
+
 
 本项目使用TypeScript编写，确保稳定运行。
 
 本工具可以使用三种模式部署：
 
 - PM2：推荐，适用于大部分系统，配置简洁
-- Crontab：适用于 Linux 系统 与 WSL（但WSL1/2均不支持IPv6），项目内仅保[V1版本设置](./readme.v1.md)的一键脚本。
+- ~~Crontab~~：不再支持
 - Systemd：适用于 Linux 大部分发行版，项目内未实现相关配置。
 - Service：适用于 Windows 系统，使用 `node-windows` 模块设置相关服务，项目内未实现相关配置。
 
@@ -63,15 +76,15 @@
 
 ## 使用方法
 
-> V2版本不再兼容V1版本设置，V1版本的使用方法请访问 **[V1版本文档](./readme.v1.md)**
+> 不再支持V1配置
 
 > 使用前请务必阅读[注意事项](#注意事项)
 
-请确保您已经安装了Node.js 12.x（较早版本并未测试不过理论上Node.js 8.x及以上版本均支持）并且能够运行npm。您可以通过以下代码在命令行测试：
+请确保您已经安装了Node.js 16.x（较早版本并未测试不过理论上Node.js 8.x及以上版本均支持）并且能够运行npm。您可以通过以下代码在命令行测试：
 
 ```bash
-$ node -v # v12.18.0
-$ npm -v # 6.14.5
+$ node -v # v16.13.0
+$ npm -v # 8.1.3
 ```
 
 （建议）全局安装TypeScript：
@@ -100,9 +113,7 @@ $ cd ddns-at-home
 安装依赖：
 
 ```bash
-# 推荐
-$ yarn
-# 或（请勿混合使用两个工具）
+# 本项目不再推荐使用yarn，因为没测试过
 $ npm install
 ```
 
@@ -112,7 +123,7 @@ $ npm install
 $ tsc # 如果没有报错就是编译成功
 ```
 
-复制配置样板，修改设置，配置模式文件请查看 [settings.v2.schema.json](./settings.v2.schema.json) ：
+复制配置样板，修改设置，配置模式文件请查看 [settings.schema.json](./settings.schema.json) ：
 
 > 强烈使用VSCode等编辑器支持JSON Schema验证的编辑器编辑配置文件。
 
@@ -126,9 +137,6 @@ $ nano settings.json # 请完全遵照schema设定的规则进行配置
 安装完毕后可以运行一次进行测试：
 
 ```bash
-# 推荐
-$ yarn start
-# 或
 $ npm start
 ```
 
@@ -140,7 +148,7 @@ $ npm start
 
 ## 守护进程配置
 
-在新版本中，您可以仍旧自行配置Crontab（可见[V1版本配置](./readme.v1.md)）进行计划任务。
+在版本 `1.1.0` 中，由于内置定时执行DDNS功能，Crontab配置暂被删去，您可以自行配置，**但请务必注意配置文件不要带有`schedule`字段！**
 
 如果您在V2配置文件中配置了计划任务，那么可以使用提供的PM2配置文件，甚至自行设置Systemd将本工具设置为服务。
 
@@ -151,9 +159,6 @@ $ npm start
 您可以全局安装pm2：
 
 ```bash
-# 推荐
-$ yarn global add pm2
-# 或
 $ npm install -g pm2
 ```
 
