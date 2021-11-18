@@ -1,6 +1,6 @@
 {
   "name": "ddns-at-home",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ddns at home",
   "main": "lib/index.js",
   "scripts": {
@@ -26,19 +26,19 @@
     "url": "https://github.com/pboymt/ddns-at-home.git"
   },
   "devDependencies": {
-    "@types/node": "^14.6.0",
+    "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
     "cross-env": "^7.0.2",
     "eslint": "^7.7.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.5.2"
   },
   "dependencies": {
-    "@alicloud/pop-core": "^1.7.9",
+    "@alicloud/pop-core": "^1.7.10",
     "@kocal/logger": "^2.0.11",
     "ajv": "^6.12.4",
-    "axios": "^0.20.0",
+    "axios": "^0.24.0",
     "date-fns": "^2.15.0",
-    "timexe": "^1.0.0"
+    "timexe": "^1.0.5"
   }
 }
