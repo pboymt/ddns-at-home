@@ -19,7 +19,7 @@ export function setting(): Setting {
 
     try {
 
-        settingObj = JSON.parse(readFileSync(settingPath, 'utf-8'));
+        settingObj = JSON.parse(readFileSync(settingPath, 'utf-8')) as DDNSSetting;
 
     } catch (error) {
 
@@ -64,8 +64,8 @@ export function setting(): Setting {
             setting: settingObj
         };
     } else {
-        logger.error('不再支持v1版本配置和运行方式，请迁移到v2版本的配置和运行方式！')
-        throw Error('不再支持v1版本配置和运行方式，请迁移到v2版本的配置和运行方式！')
+        logger.error('不再支持v1版本配置和运行方式，请迁移到v2版本的配置和运行方式！');
+        throw Error('不再支持v1版本配置和运行方式，请迁移到v2版本的配置和运行方式！');
     }
 
 }

@@ -11,7 +11,7 @@
     "crontab": "sh set-crontab.sh",
     "chmod": "chmod +x install.sh && chmod +x set-crontab.sh",
     "lint": "eslint .",
-    "fix": "tslint --project . --fix"
+    "fix": "eslint --project . --fix"
   },
   "keywords": [
     "ddns"

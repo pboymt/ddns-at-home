@@ -29,15 +29,18 @@ void (async () => {
 
         }
 
-        const result = timexe(
+        const result = timexe.add(
             `* * * ${setting.setting.schedule.hour ?? '*'} ${setting.setting.schedule.minute ?? '/5'}`,
-            async () => {
+            () => {
 
                 logger.info('执行计划任务');
 
-                await DDNSRunner.run(setting.setting);
-
-                logger.info('计划任务执行完毕');
+                DDNSRunner
+                    .run(setting.setting)
+                    .then(() => logger.info('计划任务执行完毕'))
+                    .catch((err) => {
+                        throw err;
+                    });
 
             }
         );
