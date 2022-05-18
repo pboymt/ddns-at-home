@@ -5,6 +5,13 @@
 
 ## 新版本亮点
 
+### 1.2.0
+
+- 优化代码
+- 接入Cloudflare服务，但不支持直接添加Zone
+
+### 1.1.0
+
 - 代码重构，更易阅读
 - 将阿里云服务从单页代码中独立，方便 **接入其他服务**
 - 配置文件规则优化（版本为2），可以配置 **多服务、多域名、多记录**
@@ -32,6 +39,7 @@
 | 包名 | 用途 | 使用版本 |
 | :- | :- | :- |
 | @alicloud/pop-core | 用于请求阿里云OpenAPI | ![@alicloud/pop-core](https://img.shields.io/static/v1?label=@alicloud/pop-core&message=^1.7.10&color=important&style=flat-square) |
+| cloudflare | 用于请求Cloudflare API | ![cloudflare](https://img.shields.io/static/v1?label=cloudflare&message=^2.9.1&color=important&style=flat-square) |
 | @kocal/logger | 格式化日志输出 | ![@kocal/logger](https://img.shields.io/static/v1?label=@kocal/logger&message=^2.0.11&color=important&style=flat-square) |
 | ajv | 用于验证JSON Schema | ![ajv](https://img.shields.io/static/v1?label=ajv&message=^6.12.4&color=important&style=flat-square) |
 | axios | 探测IP地址 | ![axios](https://img.shields.io/static/v1?label=axios&message=^0.24.0&color=important&style=flat-square) |
@@ -55,10 +63,11 @@
 
 本工具可以使用三种模式部署：
 
-- PM2：推荐，适用于大部分系统，配置简洁
+- PM2：推荐，适用于非 Windows 系统，配置简洁
 - ~~Crontab~~：不再支持
 - Systemd：适用于 Linux 大部分发行版，项目内未实现相关配置。
 - Service：适用于 Windows 系统，使用 `node-windows` 模块设置相关服务，项目内未实现相关配置。
+- Docker：适用于所有能够运行 Docker 的操作系统，项目内未实现相关配置。
 
 ## 开源协议
 
