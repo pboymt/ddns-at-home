@@ -88,6 +88,8 @@ typings/
 .dynamodb/
 
 # User Setting files
+/test.js
+/test.json
 .vscode/
 readme.md.tpl
 app/
