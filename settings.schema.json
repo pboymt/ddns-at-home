@@ -52,82 +52,84 @@
             "type": "array",
             "description": "使用的域名服务配置",
             "minItems": 1,
-            "items": [
-                {
-                    "type": "object",
-                    "title": "阿里云配置",
-                    "additionalProperties": false,
-                    "required": [
-                        "name",
-                        "apiKey",
-                        "apiSecret",
-                        "domains"
-                    ],
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "title": "服务名称",
-                            "description": "这是Aliyun的配置",
-                            "const": "aliyun",
-                            "default": "aliyun"
-                        },
-                        "apiKey": {
-                            "type": "string",
-                            "title": "具有Domain和DNS权限的API Key"
-                        },
-                        "apiSecret": {
-                            "type": "string",
-                            "title": "具有Domain和DNS权限的API Secret"
-                        },
-                        "domains": {
-                            "type": "array",
-                            "title": "域名列表",
-                            "minItems": 1,
-                            "items": {
-                                "type": "object",
-                                "title": "DDNS域名设置",
-                                "additionalProperties": false,
-                                "required": [
-                                    "domainName",
-                                    "resourceRecords"
-                                ],
-                                "properties": {
-                                    "domainName": {
-                                        "type": "string",
-                                        "title": "域名"
-                                    },
-                                    "resourceRecords": {
-                                        "type": "array",
-                                        "title": "域名记录列表",
-                                        "minItems": 1,
-                                        "items": {
-                                            "type": "object",
-                                            "additionalProperties": false,
-                                            "required": [
-                                                "resourceRecord"
-                                            ],
-                                            "properties": {
-                                                "resourceRecord": {
-                                                    "type": "string",
-                                                    "title": "域名记录"
-                                                },
-                                                "disableIPv6": {
-                                                    "type": "boolean",
-                                                    "title": "禁用IPv6设置（不设置AAAA记录）",
-                                                    "default": false
-                                                },
-                                                "disableIPv4": {
-                                                    "type": "boolean",
-                                                    "title": "禁用IPv4设置（不设置A记录）",
-                                                    "default": false
-                                                },
-                                                "TTL": {
-                                                    "type": "number",
-                                                    "title": "域名记录TTL值",
-                                                    "description": "请谨慎使用小于600的值",
-                                                    "default": 600,
-                                                    "minimum": 1
-                                                }
+            "items": {
+                "type": "object",
+                "title": "域名服务配置",
+                "additionalProperties": false,
+                "required": [
+                    "name",
+                    "apiKey",
+                    "apiSecret",
+                    "domains"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "服务名称",
+                        "description": "指定配置使用的服务名称",
+                        "enum": [
+                            "aliyun",
+                            "cloudflare"
+                        ]
+                    },
+                    "apiKey": {
+                        "type": "string",
+                        "title": "API Key",
+                        "description": "Aliyun：具有Domain和DNS权限的API Key\nCloudflare：使用API令牌时为空，否则为账户邮箱"
+                    },
+                    "apiSecret": {
+                        "type": "string",
+                        "title": "API Secret",
+                        "description": "Aliyun：具有Domain和DNS权限的API Secret\nCloudflare：使用API令牌填写API令牌，否则为API密钥"
+                    },
+                    "domains": {
+                        "type": "array",
+                        "title": "域名列表",
+                        "minItems": 1,
+                        "items": {
+                            "type": "object",
+                            "title": "DDNS域名设置",
+                            "additionalProperties": false,
+                            "required": [
+                                "domainName",
+                                "resourceRecords"
+                            ],
+                            "properties": {
+                                "domainName": {
+                                    "type": "string",
+                                    "title": "域名"
+                                },
+                                "resourceRecords": {
+                                    "type": "array",
+                                    "title": "域名记录列表",
+                                    "minItems": 1,
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "required": [
+                                            "resourceRecord"
+                                        ],
+                                        "properties": {
+                                            "resourceRecord": {
+                                                "type": "string",
+                                                "title": "域名记录"
+                                            },
+                                            "disableIPv6": {
+                                                "type": "boolean",
+                                                "title": "禁用IPv6设置（不设置AAAA记录）",
+                                                "default": false
+                                            },
+                                            "disableIPv4": {
+                                                "type": "boolean",
+                                                "title": "禁用IPv4设置（不设置A记录）",
+                                                "default": false
+                                            },
+                                            "TTL": {
+                                                "type": "number",
+                                                "title": "域名记录TTL值",
+                                                "description": "请谨慎使用小于600的值",
+                                                "default": 600,
+                                                "minimum": 1
                                             }
                                         }
                                     }
@@ -136,7 +138,7 @@
                         }
                     }
                 }
-            ]
+            }
         },
         "schedule": {
             "type": "object",

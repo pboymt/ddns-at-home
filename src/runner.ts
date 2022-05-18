@@ -2,6 +2,7 @@ import { DDNSSetting, DDNSSettingGlobal, DDNSSettingService } from "./interface"
 import { logger } from "./utils/logger";
 import { ip } from "./services/ip";
 import { AliyunService } from "./services/aliyun/service";
+import { CloudflareService } from "./services/cloudflare/service";
 
 interface IPAddress {
     v4: string | null
@@ -44,6 +45,10 @@ export class DDNSRunner {
             switch (service.name) {
                 case 'aliyun': {
                     await AliyunService.run(service, this.globalRRSetting, this.ip);
+                    break;
+                }
+                case 'cloudflare': {
+                    await CloudflareService.run(service, this.globalRRSetting, this.ip);
                     break;
                 }
                 default:

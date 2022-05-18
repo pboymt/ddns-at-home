@@ -2,7 +2,7 @@
   "name": "ddns-at-home",
   "version": "1.1.0",
   "description": "ddns at home",
-  "main": "lib/index.js",
+  "main": "app/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development node lib/index.js",
     "start:log": "cross-env NODE_ENV=development node lib/index.js > test.log",
@@ -26,6 +26,7 @@
     "url": "https://github.com/pboymt/ddns-at-home.git"
   },
   "devDependencies": {
+    "@types/cloudflare": "^2.7.8",
     "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
@@ -39,6 +40,7 @@
     "@kocal/logger": "^2.0.11",
     "ajv": "^6.12.4",
     "axios": "^0.24.0",
+    "cloudflare": "^2.9.1",
     "date-fns": "^2.15.0",
     "timexe": "^1.0.5"
   }
