@@ -1,19 +1,12 @@
+import { DDNSRunner } from "./runner";
 import { setting as s } from "./setting";
 import { help } from "./utils/help";
-// import { DDNSV1 } from "./v1";
-import { DDNSRunner } from "./runner";
-import timexe from 'timexe';
 import { logger } from "./utils/logger";
+import timexe from 'timexe';
 
 help();
 
 const setting = s();
-
-// if (setting.version === 1) {
-
-//     void new DDNSV1(setting.setting).run();
-
-// } else {
 
 void (async () => {
 
@@ -66,5 +59,3 @@ void (async () => {
     }
 
 })();
-
-// }

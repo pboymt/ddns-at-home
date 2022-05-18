@@ -1,13 +1,9 @@
 import { logger } from "../../utils/logger";
-import { DDNSSettingService, DDNSSettingGlobal, DDNSSettingDomain } from "../../interface";
+import { DDNSSettingService, DDNSSettingGlobal, DDNSSettingDomain, IPAddress } from "../../interface";
 import { DNSClient, DomainClient } from "./clients";
 import Core from '@alicloud/pop-core';
 import { DescribeDomains, DomainType, DescribeDomainRecords, RecordType, AddDomainRecord, UpdateDomainRecord } from "./response";
 
-interface IPAddress {
-    v4: string | null
-    v6: string | null
-}
 
 export class AliyunService {
 
