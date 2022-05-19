@@ -62,7 +62,7 @@ export class AliyunService {
 
                     logger.warn('添加域名失败');
 
-                    logger.warn(error);
+                    logger.warn(String(error));
 
                     logger.warn('跳过这个域名的配置流程');
 
@@ -138,7 +138,7 @@ export class AliyunService {
 
                     logger.info(`A记录[${record_setting.resourceRecord}]添加/更新失败`);
 
-                    logger.warn(error);
+                    logger.warn(String(error));
 
                 }
 
@@ -194,7 +194,7 @@ export class AliyunService {
 
                     logger.info(`AAAA记录[${record_setting.resourceRecord}]添加/更新失败`);
 
-                    logger.warn(error);
+                    logger.warn(String(error));
 
                 }
 

@@ -42,25 +42,12 @@ export class CloudflareService {
 
             if (!existed_domain) {
 
-                // try {
-
+                // 暂不支持在 Cloudflare 中添加 Zone
                 logger.info(`域名[${domain.domainName}]不存在于Zone列表，暂不支持自动在Cloudflare中设置Zone，请自行添加域名到Cloudflare`);
-
-                //     await this.addDomain(domain.domainName);
-
-                //     logger.info(`域名[${domain.domainName}]添加成功`);
-
-                // } catch (error) {
-
-                //     logger.warn('添加域名失败');
-
-                //     logger.warn(error);
 
                 logger.warn('跳过这个域名的配置流程');
 
                 continue;
-
-                // }
 
             }
 
@@ -200,7 +187,7 @@ export class CloudflareService {
 
                     logger.info(`AAAA记录[${record_setting.resourceRecord}]添加/更新失败`);
 
-                    logger.warn(error);
+                    logger.warn(String(error));
 
                 }
 
@@ -232,25 +219,6 @@ export class CloudflareService {
         return res.result;
 
     }
-
-    /**
-     * 根据传入参数添加域名
-     */
-    // async addDomain(domainName: string): Promise<void> {
-
-    //     logger.debug(`添加域名[${domainName}]`);
-
-    //     const params = {
-    //         'DomainName': domainName
-    //     };
-
-    //     const requestOption = {
-    //         method: 'POST'
-    //     };
-
-    //     await this.dnsClient.request('AddDomain', params, requestOption);
-
-    // }
 
     /**
      * 获取指定domain name的record list

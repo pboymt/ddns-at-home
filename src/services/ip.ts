@@ -27,7 +27,7 @@ export async function ip(family: 4 | 6 = 4): Promise<string | null> {
         }
         return null;
     } catch (error) {
-        logger.error(error);
+        logger.error(String(error));
         return null;
     }
 }
