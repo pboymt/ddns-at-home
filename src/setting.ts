@@ -12,7 +12,7 @@ interface Setting {
 
 export function setting(): Setting {
 
-    const settingPath = join(__dirname, '../settings.json');
+    const settingPath = join(process.cwd(), 'settings.json');
     logger.debug(`配置文件路径：${settingPath}`);
 
     let settingObj: DDNSSetting;
