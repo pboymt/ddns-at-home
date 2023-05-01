@@ -36,7 +36,7 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "@alicloud/pop-core": "^1.7.10",
+    "@alicloud/pop-core": "^1.7.13",
     "@kocal/logger": "^2.0.11",
     "ajv": "^8.11.0",
     "axios": "^0.27.2",
